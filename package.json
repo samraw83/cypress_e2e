@@ -4,6 +4,7 @@
   "description": "End to end automation testing for cypress",
   "main": "index.js",
   "scripts": {
+    "start": "index.js",
     "cypress-open": "cypress open",
     "run": "cypress run",
     "test": "./node_modules/.bin/cypress run",
