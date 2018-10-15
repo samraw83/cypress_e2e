@@ -6,7 +6,7 @@
   "scripts": {
     "start": "index.js",
     "cypress-open": "cypress open",
-    "run": "cypress run",
+    "test-chrome": "cypress run --spec ./cypress/integration/example_1_spec.js --browser chrome",
     "test": "./node_modules/.bin/cypress run",
     "test:ci:record": "cypress run"
   },
@@ -17,5 +17,9 @@
     "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-cypress": "^2.0.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samraw83/cypress_e2e.git"
+}
 }

@@ -1,9 +1,7 @@
 "use strict";
-describe("First test Browser launch", function() {
-    it("get title of the page", function() {
+describe("E2E Testing of Banking Application", () =>{
+    it("Assert Webpage elements", ()=> {
         cy.viewport('macbook-15');
-
-        //cy.pause();
 
         cy.visit("http://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
 
@@ -21,21 +19,22 @@ describe("First test Browser launch", function() {
 
         cy.url().should('include', '/customer');
 
-        cy.get('.form-control').select('Harry Potter')
+        cy.get('.form-control').select('Harry Potter');
 
         cy.get('.btn-default').click();
 
         cy.url().should('include', '/account');
 
         cy.get('button.btn.home').contains('Home');
+        cy.get('.logout').should('have.text', 'Logout');
 
-        cy.get('.logout').contains('Logout');
-
-        cy.get('strong').contains('Welcome Harry Potter !!');
-
-        cy.get('[id=accountSelect]').contains('select', '1004');
-        cy.get('[id=accountSelect]').contains('select', '1005');
-        cy.get('[id=accountSelect]').contains('select', '1006');
+        cy.get('strong').contains('Welcome Harry Potter !!').screenshot('Welcome Message');
+        cy.get('[id=accountSelect]').select('1004');
+        cy.get('[id=accountSelect]').contains('select', '1004').screenshot('Harry_Potter_Account_1');
+        cy.get('[id=accountSelect]').select('1005');
+        cy.get('[id=accountSelect]').contains('select', '1005').screenshot('Harry_Potter_Account_2');
+        cy.get('[id=accountSelect]').select('1006');
+        cy.get('[id=accountSelect]').contains('select', '1006').screenshot('Harry_Potter_Account_3');
         cy.get('option').should(($option)=>{
             expect($option).to.have.length(3);
 
@@ -47,10 +46,10 @@ describe("First test Browser launch", function() {
                 '1004',
                 '1005',
                 '1006'
-              ])
+              ]);
         });
 
-        cy.get('[ng-hide=noAccount]').contains('Account Number : 1004 , Balance : 0 , Currency : Dollar');
+       // cy.get('[ng-hide=noAccount]').contains('Account Number : 1004 , Balance : 0 , Currency : Dollar');
 
     });
 });
